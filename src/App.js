@@ -3,13 +3,12 @@ import "./App.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import SearchBox from "./components/searchbox/SearchBox";
-import Add from "./components/add/Add";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      monsters: [],
+      items: [],
       searchField: ""
     };
   }
@@ -19,7 +18,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <SearchBox />
-        <Add />
+
         {/* <CardList /> */}
         <Footer />
       </div>
