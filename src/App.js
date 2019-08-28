@@ -6,6 +6,7 @@ import SearchBox from "./components/searchbox/SearchBox";
 import dataDummy from "./components/data-dummy/dataDummy";
 import categories from "./components/data-dummy/categories";
 import CardList from "./components/main-component/card-list/CardList";
+import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -27,11 +28,12 @@ class App extends Component {
     console.log(this.state);
     return (
       <div className="App">
-        <Header />
-        <SearchBox placeholder="Search" handleChange={this.handleChange} />
-
-        <CardList categories={filteredCategories} />
-        <Footer />
+        <BrowserRouter>
+          <Header />
+          <SearchBox placeholder="Search" handleChange={this.handleChange} />
+          <CardList categories={filteredCategories} />
+          <Footer />
+        </BrowserRouter>
       </div>
     );
   }
