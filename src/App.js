@@ -5,11 +5,11 @@ import Footer from "./components/footer/Footer";
 import SearchBox from "./components/searchbox/SearchBox";
 import dataDummy from "./components/data-dummy/dataDummy";
 import categories from "./components/data-dummy/categories";
-import CardList from "./components/main-component/card-list";
+import CardList from "./components/main-component/card-list/CardList";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       items: dataDummy,
       categories: categories,
@@ -20,15 +20,17 @@ class App extends Component {
     this.setState({ searchField: e.target.value });
   };
   render() {
-    const filteredCategories = this.categories.filter(category =>
-      category.category.toLowerCase().includes(this.searchField.toLowerCase())
+    const { categories, searchField } = this.state;
+    const filteredCategories = categories.filter(category =>
+      category.name.toLowerCase().includes(searchField.toLowerCase())
     );
+    console.log(this.state);
     return (
       <div className="App">
         <Header />
         <SearchBox placeholder="Search" handleChange={this.handleChange} />
 
-        <CardList items={filteredCategories} />
+        <CardList categories={filteredCategories} />
         <Footer />
       </div>
     );
